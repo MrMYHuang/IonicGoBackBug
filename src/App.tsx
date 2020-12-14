@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, RouteComponentProps, withRouter } from 'react-router-dom';
+import { Redirect, Route, RouteComponentProps, withRouter } from 'react-router-dom';
 import {
   IonApp,
   IonIcon,
@@ -70,6 +70,7 @@ class AppOrig extends React.Component<AppOrigProps, State> {
             <IonRouterOutlet animated={false}>
               <Route path="/:tab(catalog)/:type(catalog|volumes|famous)?/:path?" render={(props: any) => <CatalogPage {...props} />} exact={true} />
               <Route path="/:tab(bookmarks)" render={(props: any) => <BookmarkPage {...props} />} exact={true} />
+              <Route path="/" render={() => <Redirect to="/bookmarks" />} exact={true} />
             </IonRouterOutlet>
             <IonTabBar slot="bottom">
               <IonTabButton tab="bookmarks" href="/bookmarks">
